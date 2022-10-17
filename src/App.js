@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Productpage from './Pages/Productpage';
+import Layout from './Components/Layout';
+import Home from './Pages/Home';
+import { useEffect, useState } from 'react';
+
 
 function App() {
+  const [dataFile, setdataFile] = useState(null)
+
+  useEffect(()=> {
+    async function data () {
+          let res = await fetch(`https://restcountries.com/v3.1/all`);
+          let data = await res.json();
+          setdataFile(data);
+    };
+
+    console.log('useeffect is working');
+    data()
+  }, [])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Home data={dataFile} />} />
+        <Route path='product/:id' element={<Productpage data={dataFile} />} />
+      </Route>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
