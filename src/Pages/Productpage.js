@@ -64,7 +64,7 @@ const Productpage = ({data}) => {
                                                     {country.borders &&
                                                     (!(country.borders === undefined) &&
                                                     country.borders.map((i, index) => {
-                                                        return <Btn link={`/product/${i}`} class={'mr-2 mb-2'} key={index} >{i}</Btn>})
+                                                        return <Btn link={`/country/${i}`} class={'mr-2 mb-2'} key={index} >{i}</Btn>})
                                                         )
                                                     }
                                                     </div>
