@@ -7,7 +7,7 @@ const Header = () => {
 
 
     return(
-        <header className= 'fixed top-0 w-full mx-auto max-w-screen-2xl shadow-[0px_5px_5px_0px_rgb(0,0,0,0.25)]  p-6   flex justify-between items-center bg-whiteBG dark:bg-VDGrayBG z-50'  >
+        <header className= 'fixed top-0 w-full mx-auto max-w-screen-2xl shadow-[0px_5px_5px_0px_rgb(0,0,0,0.25)]  p-6   flex justify-between items-center bg-whiteBG dark:bg-VDGrayBG z-40'  >
 
             <div className='mr-auto text-lg md:text-2xl my-auto font-extrabold text-blackTX dark:text-whiteN'>
                 <h1>Where in the world?</h1>

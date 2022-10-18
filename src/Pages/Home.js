@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import Card from '../Components/Card';
 import Form from '../Components/Form';
+import Preloader from '../Components/Preloader';
 
 
 const Home = ({data}) => {
   const [search, setSearch] = useState('');
   const [continent, setregion] = useState('');
+ 
   
   const countryList = (data && data.filter(a => { 
     if (a.name.common.toLowerCase().includes(search.toLowerCase()) && a.region.toLowerCase().includes(continent)){
@@ -13,7 +15,7 @@ const Home = ({data}) => {
     }
   }))
 
-
+ 
   window.scrollTo(0, 0);
   
   return(
@@ -24,7 +26,7 @@ const Home = ({data}) => {
               countryList.map((a, index) => {
                 return(
                   <Card content={a} key={index} />
-                )
+                  )
               })
             }
           </div>

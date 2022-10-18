@@ -1,4 +1,4 @@
-import './Form.css';
+
 
 const Form = ({setSearch, setregion}) => {
 

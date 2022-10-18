@@ -27,7 +27,7 @@ const Productpage = ({data}) => {
             {country && 
                     (!(data === undefined) &&
                     <>
-                        <div className='px-5 h-screen pt-20 mx-auto text-left text-VDGrayBG dark:text-whiteN relative '>
+                        <div className='px-5 min-h-fit  pt-20 mx-auto text-left text-VDGrayBG dark:text-whiteN relative  '>
                             <div className='sm:mt-24 mt-9 '>
                                 <Btn link={'/'} class={' text-lg'}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className='fill-VDGrayBG dark:fill-whiteN w-5 mr-3' viewBox="0 0 512 512"><title>Arrow Back</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
