@@ -20,7 +20,7 @@ const Form = ({setSearch, setregion}) => {
             </label>
             </div>
             <div className="bg-whiteN mt-4 md:mt-0 px-6 dark:bg-darkG shadow-md rounded-md max-w-fit">
-                <select className="pr-2 w-fit focus:outline-none py-3  bg-whiteN dark:bg-darkG text-black dark:text-whiteN border-none outline-none" onChange={selectRegion}>
+                <select className="pr-2 w-fit focus:outline-none py-3  bg-whiteN dark:bg-darkG text-black dark:text-whiteN border-none outline-none" onChange={selectRegion} name="filter">
                         <option value='' selected hidden disabled>Filter by Region</option>
                         <option value=''>All</option>
                         <option value='africa'>Africa</option>
