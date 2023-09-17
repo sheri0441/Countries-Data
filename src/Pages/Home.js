@@ -21,7 +21,6 @@ const Home = ({ data }) => {
       });
       setCountry(newList);
     }
-    console.log("effect");
   }, [data, search, Region]);
 
   window.scrollTo(0, 0);
