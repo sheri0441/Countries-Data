@@ -1,10 +1,17 @@
-const Form = ({ setSearch, setRegion, Region }) => {
+import { useState } from "react";
+
+const Form = ({ filterCountry }) => {
+  const [search, setSearch] = useState("");
+  const [Region, setRegion] = useState("");
+
   const searchCountry = (e) => {
     setSearch(e.target.value);
+    filterCountry(e.target.value, Region);
   };
 
   const selectRegion = (e) => {
     setRegion(e.target.value);
+    filterCountry(search, e.target.value);
   };
 
   return (
@@ -12,7 +19,6 @@ const Form = ({ setSearch, setRegion, Region }) => {
       <div className="md:w-1/2">
         <label className="shadow-md rounded-md px-7 py-6 w-full relative block bg-whiteN dark:bg-darkG ">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             className="w-6 absolute top-2/4 -translate-y-1/2 left-2 fill-gray-400"
             viewBox="0 0 512 512"
           >
@@ -32,10 +38,12 @@ const Form = ({ setSearch, setRegion, Region }) => {
           onChange={selectRegion}
           name="filter"
         >
-          {Region === null && <option value="">Filter by Region</option>}
+          <option value="" defaultChecked disabled>
+            Filter by Region
+          </option>
           <option value="">All</option>
           <option value="africa">Africa</option>
-          <option value="america">America</option>
+          <option value="americas">America</option>
           <option value="asia">Asia</option>
           <option value="europe">Europe</option>
           <option value="oceania">Oceania</option>

@@ -4,7 +4,7 @@ const Card = ({ content }) => {
   return (
     <Link
       to={`/country/${content.cca3}`}
-      className="block rounded-lg overflow-hidden shadow-xl hover:shadow-2xl hover:scale-110 transition-all dark:bg-darkG bg-whiteN"
+      className="block rounded-lg overflow-hidden shadow-xl hover:shadow-2xl hover:scale-110 transition-all dark:bg-darkG bg-whiteN w-80"
     >
       <img className="w-full h-40" src={content.flags.png} alt="" />
       <div className="px-6 py-8 text-left text-black dark:text-whiteN">

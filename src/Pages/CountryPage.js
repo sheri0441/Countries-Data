@@ -24,6 +24,8 @@ const CountryPage = ({ data }) => {
     window.scrollTo(0, 0);
   }, [id, country, data]);
 
+  console.log(country);
+
   return (
     <>
       {country && !(data === undefined) && (
@@ -47,12 +49,12 @@ const CountryPage = ({ data }) => {
                 </svg>
                 Back
               </Btn>
-              <div className="grid grid-cols-1 sm:grid-cols-2 sm:items-center gap-5 overflow-hidden mt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 sm:items-center gap-5 overflow-hidden mt-10 mb-10">
                 <div>
                   <img
-                    src={country.flags.svg}
-                    className="mx-auto max-w-full"
-                    alt=""
+                    src={country.flags.png}
+                    className=" w-full aspect-video object-fill"
+                    alt={country.flags.alt}
                   />
                 </div>
                 <div className="">
