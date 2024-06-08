@@ -2,33 +2,34 @@ import Detail from "../Components/Detail";
 import Btn from "../Components/Btn";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Preloader from "../Components/Preloader";
 
-const CountryPage = ({ data }) => {
+const CountryPage = () => {
   let { id } = useParams();
 
   const [country, setCountry] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const currentCountry =
-      !!data &&
-      data.find((i) => {
-        let country;
-        if (id === i.cca3) {
-          country = i;
-        }
-        return country;
-      });
+    const findCountry = async () => {
+      setIsLoading(true);
+      const data = await fetch(
+        `https://countryinfoapi.com/api/countries/${id}`
+      );
+      const result = await data.json();
 
-    setCountry(currentCountry);
+      setCountry(result);
+      setIsLoading(false);
+    };
+    findCountry();
 
     window.scrollTo(0, 0);
-  }, [id, country, data]);
-
-  console.log(country);
+  }, [id]);
 
   return (
     <>
-      {country && !(data === undefined) && (
+      {isLoading && <Preloader />}
+      {country && (
         <>
           <div className="px-5 min-h-fit  pt-20 mx-auto text-left text-VDGrayBG dark:text-whiteN relative  ">
             <div className="sm:mt-24 mt-9 ">
@@ -52,21 +53,16 @@ const CountryPage = ({ data }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 sm:items-center gap-5 overflow-hidden mt-10 mb-10">
                 <div>
                   <img
-                    src={country.flags.png}
+                    src={country.flag}
                     className=" w-full aspect-video object-fill"
-                    alt={country.flags.alt}
+                    alt={country.name}
                   />
                 </div>
                 <div className="">
-                  <h2 className="font-extrabold text-2xl">
-                    {country.name.common}
-                  </h2>
+                  <h2 className="font-extrabold text-2xl">{country.name}</h2>
                   <div className="md:grid md:grid-cols-2">
                     <div className="mt-3">
-                      <Detail
-                        heading={"Native Name"}
-                        detail={country.name.official}
-                      />
+                      <Detail heading={"Native Name"} detail={country.name} />
                       <Detail
                         heading={"Population"}
                         detail={country.population.toLocaleString("en-US")}
@@ -76,12 +72,12 @@ const CountryPage = ({ data }) => {
                         heading={"Sub Region"}
                         detail={country.subregion}
                       />
-                      <Detail heading={"Capital"} detail={country.capital} />
+                      <Detail heading={"Capital"} detail={country.capital[0]} />
                     </div>
                     <div className="mt-3">
                       <Detail
                         heading={"Top Level Domain"}
-                        detail={country.tld}
+                        detail={country.tld[0]}
                       />
                       <Detail
                         heading={"Currencies"}

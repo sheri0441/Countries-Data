@@ -6,9 +6,9 @@ const Card = ({ content }) => {
       to={`/country/${content.cca3}`}
       className="block rounded-lg overflow-hidden shadow-xl hover:shadow-2xl hover:scale-110 transition-all dark:bg-darkG bg-whiteN w-80"
     >
-      <img className="w-full h-40" src={content.flags.png} alt="" />
+      <img className="w-full h-40" src={content.flag} alt="" />
       <div className="px-6 py-8 text-left text-black dark:text-whiteN">
-        <h3 className="text-lg my-2 font-extrabold">{content.name.common}</h3>
+        <h3 className="text-lg my-2 font-extrabold">{content.name}</h3>
         <p>
           <b>Population:</b> {content.population.toLocaleString("en-US")}
         </p>
@@ -16,7 +16,7 @@ const Card = ({ content }) => {
           <b>Region:</b> {content.region}
         </p>
         <p>
-          <b>Capital</b> {content.capital}
+          <b>Capital</b> {content.capital[0]}
         </p>
       </div>
     </Link>

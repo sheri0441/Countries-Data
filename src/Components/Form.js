@@ -1,17 +1,10 @@
-import { useState } from "react";
-
-const Form = ({ filterCountry }) => {
-  const [search, setSearch] = useState("");
-  const [Region, setRegion] = useState("");
-
+const Form = ({ setSearch, setRegion }) => {
   const searchCountry = (e) => {
     setSearch(e.target.value);
-    filterCountry(e.target.value, Region);
   };
 
   const selectRegion = (e) => {
     setRegion(e.target.value);
-    filterCountry(search, e.target.value);
   };
 
   return (
